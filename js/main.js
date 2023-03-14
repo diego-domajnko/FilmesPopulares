@@ -1,13 +1,23 @@
 import { apiKey } from "./api.js"
 
 const listaDeFilmes = document.querySelector('.filmes');
+const barraPesquisa = document.querySelector('#buscar-filme');
+const btnPesquisa = document.querySelector('.fa-magnifying-glass');
 
 async function buscarFilmesPopulares() {
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
   const lista = await fetch(url)
   const { results } = await lista.json();
   return results;
-} 
+}
+
+// btnPesquisa.addEventListener('click', () => pesquisarFilmesPopulares)
+
+// barraPesquisa.addEventListener('keyup', (e) => {
+//   if (e.key == 'Enter') {
+//     pesquisarFilmesPopulares;
+//   }
+// })
 
 window.onload = async function() {
   const filmes = await buscarFilmesPopulares();
@@ -15,17 +25,15 @@ window.onload = async function() {
 }
 
 function listarFilems(filme) {
-
   const { title, poster_path, vote_average, release_date, overview } = filme;
   const favorito = false;
   let ehFavorito = 'regular';
+  const year = new Date(release_date).getFullYear();
+  const image = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   if (favorito) {
     ehFavorito = 'solid';
   }
-
-  const year = new Date(release_date).getFullYear();
-  const image = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   listaDeFilmes.innerHTML += `
     <div class="filme">
