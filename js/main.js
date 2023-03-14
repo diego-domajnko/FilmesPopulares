@@ -18,6 +18,11 @@ function listarFilems(filme) {
 
   const { title, poster_path, vote_average, release_date, overview } = filme;
   const favorito = false;
+  let ehFavorito = 'regular';
+
+  if (favorito) {
+    ehFavorito = 'solid';
+  }
 
   const year = new Date(release_date).getFullYear();
   const image = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -27,8 +32,8 @@ function listarFilems(filme) {
       <img src="${image}" class="filme__banner" alt="${title} ${year} poster">
       <div class="filme__informacoes">
         <h2 class="filme__informacoes__titulo">${title} ${year}</h2>
-        <span class="filme__informacoes__nota">${vote_average}</span>
-        <span class="filme__informacoes__favorito">Favoritar</span>
+        <span class="filme__informacoes__nota"><i class="fa-solid fa-star"></i>${vote_average.toFixed(1)}</span>
+        <span class="filme__informacoes__favorito"><i class="fa-${ehFavorito} fa-heart"></i>Favoritar</span>
       </div>
       <p class="filme__descricao">${overview}</p>
     </div>

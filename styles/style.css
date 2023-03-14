@@ -25,11 +25,6 @@
   box-sizing: border-box;
 }
 
-*::after,
-*::before {
-  font-family: var(--fonte-awesome);
-}
-
 body {
   background-color: var(--bg-azul);
   font-family: var(--fonte-principal);
@@ -144,22 +139,27 @@ body {
 .filme__informacoes__titulo {
   grid-column: 1/3;
   font-weight: 500;
+  line-height: 2rem;
 }
 
-.filme__informacoes__nota::before {
-  content: '\f005';
+.filme__informacoes i {
+  margin-right: 0.75rem;
+}
+
+.fa-star {
   color: var(--dourado);
-  margin-right: 0.75rem;
 }
 
-.filme__informacoes__favorito::before {
-  content: '\f004';
+.fa-heart {
   color: var(--vermelho);
-  margin-right: 0.75rem;
 }
 
 .filme__descricao {
   line-height: 2rem;
   color: var(--cinza-claro);
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }
